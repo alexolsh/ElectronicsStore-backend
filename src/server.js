@@ -5,7 +5,7 @@ import path from 'path';
 import history from 'connect-history-api-fallback';
 
 const app = express();
-// const url ='mongodb://127.0.0.1:27017';
+//const url ='mongodb://127.0.0.1:27017';
 const url ='mongodb+srv://doadmin:tXR421rzj706b58W@electronics-store-bachelor-a5b1efc2.mongo.ondigitalocean.com/admin?tls=true&authSource=admin';
 const client = new MongoClient(url);
 const dbName = "ElectronicsStore";
@@ -27,7 +27,7 @@ app.get('/api/products', async (req, res) => {
 
 app.get('/api/users/:userId/cart', async (req, res) => {
     const { userId } = req.params;
-    await client.connect(); 
+    await client.connect();
     console.log('Connected successfully to server');
     const db = client.db(dbName);
     const user = await db.collection('Users').findOne({id: userId});
